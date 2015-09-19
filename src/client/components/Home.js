@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {actionAdd as addForm} from '../../shared/reducers/form';
+import View from './helpers/View';
+import Panel from './helpers/Panel';
+import Thread from './helpers/Thread';
 
 // Select state to use.
 const mapStateToProps =
@@ -30,7 +33,14 @@ const mergeProps =
 class Home extends Component {
   render() {
     return (
-      <div>Home</div>
+      <View>
+        <Panel type="two_one-first">
+          <Thread />
+        </Panel>
+        <Panel type="two_one-second">
+          <Thread />
+        </Panel>
+      </View>
     );
   }
 }

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {actionMergeIn as mergeInForm} from '../../shared/reducers/form';
+import View from './helpers/View';
+import Panel from './helpers/Panel';
 
 // Select state to use.
 const mapStateToProps =
@@ -29,7 +31,14 @@ const mergeProps =
 class Builder extends Component {
   render() {
     return (
-      <div>Builder</div>
+      <View>
+        <Panel type="half-first">
+          left
+        </Panel>
+        <Panel type="half-second">
+          right
+        </Panel>
+      </View>
     );
   }
 }
