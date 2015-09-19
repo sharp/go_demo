@@ -11,6 +11,12 @@ import {
   actionSetCollection as setAnswerCollection
 } from '../shared/reducers/answer';
 import {
+  thunk,
+  vanillaPromise,
+  readyStatePromise,
+  logger
+} from '../shared/middlewares';
+import {
   TYPEFORM_API_KEY,
   apiVersion,
   submitEndpoint
