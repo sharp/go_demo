@@ -3,7 +3,7 @@ import form, {hydrate as hydrateForm} from './reducers/form';
 import answer, {hydrate as hydrateAnswer}  from './reducers/answer';
 
 const setStore =
-  middlewares => {
+  (middlewares = {}) => {
     const createStoreWithMiddleware =
       applyMiddleware(...middlewares)(createStore);
 
