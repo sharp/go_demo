@@ -1,0 +1,53 @@
+{
+  "_1": {
+    "id": "_1",
+    "name": "Customer feedback",
+    "description": "Thanks for shopping with Beardyman Inc. We'd love to know your thoughts on the service you received.",
+    "fields": {
+      "_1_1":{
+        "type": "short_text",
+        "question": "What is your name?",
+        "description": "We would love to get to know you better!",
+        "required": false,
+
+        "id": "_1_1",
+        "formId": "_1",
+        "name": "Short Text"
+      }
+    }
+  },
+  "_2": {
+    "id": "_2",
+    "name": "Customer Satisfaction Survey",
+    "description": "Please help us serve you better by taking two minutes to tell us about your product and service experience so far. We appreciate your business and want to make sure we meet your expectations.",
+    "fields": {
+      "_$$1":{
+        "type": "short_text",
+        "question": "What is your name?",
+        "description": "We would love to get to know you better!",
+        "required": false,
+
+        "id": "_2_1",
+        "formId": "_2",
+        "name": "Short Text"
+      }
+    }
+  },
+  "_3": {
+    "id": "_3",
+    "name": "Instructor & Course Evaluation Form",
+    "description": "",
+    "fields": {
+      "_$$1":{
+        "type": "short_text",
+        "question": "What is your name?",
+        "description": "We would love to get to know you better!",
+        "required": false,
+
+        "id": "_3_1",
+        "formId": "_3",
+        "name": "Short Text"
+      }
+    }
+  }
+}
