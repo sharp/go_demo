@@ -1,0 +1,71 @@
+{
+  "name": "typeform-builder",
+  "version": "0.0.1",
+  "description": "A form builder for Typeform.io",
+  "scripts": {
+    "start": "babel-node ./src/server/index.js",
+    "lint": "eslint ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/broucz/typeform-builder.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "redux",
+    "typeform",
+    "io",
+    "realtime",
+    "socket",
+    "hot",
+    "reload",
+    "hmr",
+    "live",
+    "edit",
+    "webpack",
+    "babel",
+    "react-component"
+  ],
+  "author": "Pierre Brouca <broucapierre@gmail.com> (https://github.com/broucz)",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/broucz/typeform-builder/issues"
+  },
+  "homepage": "https://github.com/broucz/typeform-builder",
+  "devDependencies": {
+    "babel-core": "^5.8.24",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^5.3.2",
+    "babel-plugin-react-transform": "^1.0.5",
+    "css-loader": "^0.18.0",
+    "eslint": "^1.4.3",
+    "eslint-config-airbnb": "0.0.8",
+    "eslint-plugin-react": "^3.4.1",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "react-transform-catch-errors": "^0.2.0",
+    "react-transform-webpack-hmr": "^0.1.5",
+    "redbox-react": "^1.0.5",
+    "style-loader": "^0.12.4",
+    "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.0",
+    "chalk": "^1.1.1",
+    "express": "^4.13.3",
+    "immutable": "^3.7.5",
+    "localtunnel": "^1.7.0",
+    "node-fetch": "^1.3.2",
+    "node-uuid": "^1.4.3",
+    "react": "^0.14.0 || ^0.14.0-rc1",
+    "react-css-modules": "^3.2.3",
+    "react-dom": "^0.14.0 || ^0.14.0-rc1",
+    "react-redux": "^2.1.2",
+    "react-router": "^1.0.0 || ^1.0.0-rc1",
+    "redux": "^3.0.0",
+    "socket.io": "^1.3.6",
+    "socket.io-client": "^1.3.6"
+  }
+}
