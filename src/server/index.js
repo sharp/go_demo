@@ -1,9 +1,12 @@
 import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
+import createIoServer from './io';
 import chalk from 'chalk';
 import webpack from 'webpack';
 import webpackConfig from '../../webpack.config';
+
+createIoServer();
 
 const app = express();
 
