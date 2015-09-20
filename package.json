@@ -49,6 +49,7 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "jsdom": "^6.5.0",
     "mocha": "^2.3.2",
+    "react-addons-test-utils": "^0.14.0 || ^0.14.0-rc1",
     "react-transform-catch-errors": "^0.2.0",
     "react-transform-webpack-hmr": "^0.1.5",
     "redbox-react": "^1.0.5",
