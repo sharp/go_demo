@@ -11,3 +11,7 @@ Object.keys(window).forEach((key) => {
     global[key] = window[key];
   }
 });
+
+require.extensions['.css'] = function () {
+  return null;
+};
