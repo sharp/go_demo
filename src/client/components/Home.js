@@ -35,10 +35,10 @@ class Home extends Component {
     return (
       <View>
         <Panel type="two_one-first">
-          <Thread />
+          <Thread type="fail" entries={[]}/>
         </Panel>
         <Panel type="two_one-second">
-          <Thread />
+          <Thread type="fail" entries={[]}/>
         </Panel>
       </View>
     );

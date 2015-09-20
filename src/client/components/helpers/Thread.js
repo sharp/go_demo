@@ -2,11 +2,23 @@ import React, {Component, PropTypes} from 'react';
 import css from 'react-css-modules';
 import styles from '../../styles/thread.css';
 
-class Thread extends Component {
+export class Thread extends Component {
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+    entries: PropTypes.array.isRequired
+  };
   render() {
+    const {type, entries = []} = this.props;
     return (
       <div styleName="container">
-        thread...
+        {entries.map(entry => {
+          switch (type) {
+          default:
+            return (
+              null
+            );
+          }
+        })}
       </div>
     );
   }
