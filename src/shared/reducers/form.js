@@ -1,4 +1,5 @@
 import {Map, fromJS} from 'immutable';
+import ensure from '../utils/ensureEntryIsValidAndImmutable';
 
 export const INITIAL_STATE = new Map();
 
@@ -41,9 +42,9 @@ export const setCollection =
 
 export const add =
   (state, value) => {
-    const ensureImmutable = fromJS(value);
+    const result = ensure(value);
     return state.update('collection', new Map(),
-      current => current.set(ensureImmutable.get('id'), ensureImmutable)
+      current => current.set(result.get('id'), result)
     );
   };
 
