@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {actionAdd as addForm} from '../../shared/reducers/form';
@@ -10,7 +10,7 @@ import Thread from './helpers/Thread';
 const mapStateToProps =
   state => ({
     form: state.form,
-    answer: state.answer
+    feed: state.feed
   });
 
 // Pick available actions.
@@ -31,14 +31,26 @@ const mergeProps =
   });
 
 class Home extends Component {
+  static propTypes = {
+    builder: PropTypes.object.isRequired
+  };
+
   render() {
+    const {builder: {form, feed}} = this.props;
     return (
       <View>
-          <Thread type="fail" entries={[]}/>
         <Panel type="three_one-first">
+          <Thread
+            type="card"
+            options={{link: {baseUrl: 'form'}}}
+            entries={form.get('collection').toList()}/>
         </Panel>
-          <Thread type="fail" entries={[]}/>
         <Panel type="three_one-second">
+          <Thread type="feed" entries={
+            feed
+              .sortBy(n => n.get('count'))
+              .reverse()
+          }/>
         </Panel>
       </View>
     );
