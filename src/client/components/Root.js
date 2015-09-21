@@ -9,6 +9,7 @@ import {
   actionSetList as setFeedList
 } from '../../shared/reducers/feed';
 import setStore from '../../shared/setStore';
+import Header from './Header';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 const store = setStore();
@@ -28,6 +29,7 @@ export default class Root extends Component {
     return (
       <Provider store={store}>
         <div>
+          <Header {...this.props}/>
           {this.props.children}
         </div>
       </Provider>
