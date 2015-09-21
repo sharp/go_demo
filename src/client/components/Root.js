@@ -5,6 +5,9 @@ import {
   actionSetReference as setFormReference,
   actionSetCollection as setFormCollection
 } from '../../shared/reducers/form';
+import {
+  actionSetList as setFeedList
+} from '../../shared/reducers/feed';
 import setStore from '../../shared/setStore';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
@@ -13,6 +16,7 @@ const store = setStore();
 socket.on('state', state => {
   store.dispatch(setFormReference(state.form.reference));
   store.dispatch(setFormCollection(state.form.collection));
+  store.dispatch(setFeedList(state.feed));
 });
 
 export default class Root extends Component {

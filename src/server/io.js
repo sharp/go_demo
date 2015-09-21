@@ -11,6 +11,9 @@ import {
   actionSetCollection as setAnswerCollection
 } from '../shared/reducers/answer';
 import {
+  actionSetList as setFeedList
+} from '../shared/reducers/feed';
+import {
   thunk,
   vanillaPromise,
   readyStatePromise,
@@ -52,8 +55,10 @@ export default function createIoServer() {
   ]);
   const fieldReference = require('./fake-db/fields.json');
   const formCollection = require('./fake-db/forms.json');
+  const feedCollection = require('./fake-db/feeds.json');
   store.dispatch(setFormReference(fieldReference));
   store.dispatch(setFormCollection(formCollection));
+  store.dispatch(setFeedList(feedCollection));
 
   // store <-> io.
   // ----------------------------------
