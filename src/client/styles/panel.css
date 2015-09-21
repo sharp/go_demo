@@ -25,3 +25,15 @@
   flex-basis: calc(100% / 3);
   padding-left: .1rem;
 }
+
+.three_one-first {
+  composes: panel;
+  flex-basis: calc((100% / 4) * 3);
+  padding-right: .1rem;
+}
+
+.three_one-second {
+  composes: panel;
+  flex-basis: calc(100% / 4);
+  padding-left: .1rem;
+}

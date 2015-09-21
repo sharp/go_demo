@@ -34,11 +34,11 @@ class Home extends Component {
   render() {
     return (
       <View>
-        <Panel type="two_one-first">
           <Thread type="fail" entries={[]}/>
+        <Panel type="three_one-first">
         </Panel>
-        <Panel type="two_one-second">
           <Thread type="fail" entries={[]}/>
+        <Panel type="three_one-second">
         </Panel>
       </View>
     );
