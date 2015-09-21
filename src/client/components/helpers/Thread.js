@@ -4,6 +4,7 @@ import css from 'react-css-modules';
 import styles from '../../styles/thread.css';
 import Card from './Card';
 import Feed from './Feed';
+import Button from './Button';
 
 export class Thread extends Component {
   static propTypes = {
@@ -29,6 +30,13 @@ export class Thread extends Component {
               <Feed
                 key={entry.get('id')}
                 entry={entry} />
+            );
+          case 'button':
+            return (
+              <Button
+                key={entry.get('type')}
+                entry={entry}
+                options={this.props.options}/>
             );
           default:
             return (
