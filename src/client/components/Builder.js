@@ -39,11 +39,27 @@ class Builder extends Component {
     params: PropTypes.object
   };
 
+  addFieldToForm(field) {
+    const {builder, params: {id}} = this.props;
+    const __uuid = uuid.v4();
+    return builder.actions.mergeInForm(
+      [id, 'fields', __uuid],
+      field
+        .set('formId', id)
+        .set('id', __uuid)
+    );
+  }
   render() {
+    const {builder: {form}} = this.props;
     return (
       <View>
         <Panel type="half-first">
-          left
+          <Thread
+            type="button"
+            entries={form.get('reference').toList().take(6)}
+            options={{
+              onClick: entry => this.addFieldToForm(entry)
+            }}/>
         </Panel>
         <Panel type="half-second">
           right
