@@ -1,0 +1,27 @@
+.container {
+  flex-basis: calc(100% / 3);
+}
+
+.base {
+  composes: base-text from './shared.css';
+  composes: shadow-2p from './shared.css';
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  margin: .4rem;
+  border-radius: 2px;
+}
+
+.supporting {
+  background-color: #fff;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  overflow: hidden;
+  padding: 1.6rem;
+  cursor: pointer;
+}
+.supporting:hover {
+  background-color: rgba(139, 203, 202, 0.13);
+}
