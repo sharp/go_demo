@@ -1,0 +1,71 @@
+.base {
+  composes: base-text from './shared.css';
+  composes: shadow-2p from './shared.css';
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  margin: .4rem;
+  background-color: #fff;
+  font-size: 1.6rem;
+  border-radius: 2px;
+}
+
+.base-no-spacing {
+  composes: base;
+  margin: 0;
+}
+
+.title {
+  padding: 1.6rem;
+}
+
+.title-no-bottom {
+  composes: title;
+  padding-bottom: 0;
+}
+
+.supporting {
+  composes: supp-text from './shared.css';
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  overflow: hidden;
+  padding: 1.6rem;
+}
+
+.actions {
+  padding: 8px;
+}
+
+.actions-border {
+  composes: actions;
+  border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.button { /* TODO: have to be 'global' */
+  composes: color-main from './shared.css';
+  composes: transition-button from './shared.css';
+  padding: 0 .8rem;
+  display: inline-block;
+  height: 36px;
+  min-width: 64px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  line-height: 36px;
+  vertical-align: middle;
+  outline: none;
+}
+.button:active {
+  background-color: rgba(158,158,158,.4);
+}
+.button:hover {
+  background-color: rgba(158,158,158,.2);
+}
+.button:focus {
+  background-color: rgba(0,0,0,.12);
+}
