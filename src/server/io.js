@@ -54,4 +54,21 @@ export default function createIoServer() {
   const formCollection = require('./fake-db/forms.json');
   store.dispatch(setFormReference(fieldReference));
   store.dispatch(setFormCollection(formCollection));
+
+  // store <-> io.
+  // ----------------------------------
+
+  // Listen to store change and dispatch update using io.
+  store.subscribe(() => {
+    console.log(chalk.gray('store -> update')); // eslint-disable-line no-console
+
+    // TODO: fine tuning io.emit(s)
+    return io.emit('state', store.getState());
+  });
+
+  // Handle new connection.
+  io.on('connection', socket => {
+    // Send initial state to remote app.
+    socket.emit('state', store.getState());
+  });
 }
