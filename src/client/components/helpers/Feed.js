@@ -25,7 +25,7 @@ export class Feed extends Component {
               <div>
                 <Icon type={entry.get('icon')}/>
               </div>
-              <div styleName="title">{entry.get('title')}</div>
+              <div styleName={`title-${type}`}>{entry.get('title')}</div>
             </div>
           </div>
           {(msg)

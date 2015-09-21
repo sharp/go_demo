@@ -79,11 +79,12 @@
 
 .header-default {
   composes: base-header;
+  color: rgb(139, 203, 202);
 }
 
 .header-answer {
   composes: base-header;
-  color: rgb(56, 142, 60);
+  color: rgb(70, 167, 75);
 }
 
 /* TODO: bug ? */
@@ -100,6 +101,29 @@
 
 .header-update {
   composes: base-header;
+  color: rgb(139, 203, 202);
+}
+
+.title-default {
+  composes: title;
+  color: #000;
+}
+
+.title-answer{
+  composes: title;
+}
+
+.title-info{
+  composes: title;
+}
+
+.title-grade{
+  composes: title;
+}
+
+.title-update {
+  composes: title;
+  color: #000;
 }
 
 .supporting-default {
