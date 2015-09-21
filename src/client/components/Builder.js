@@ -1,9 +1,12 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import uuid from 'node-uuid';
+import {Map} from 'immutable';
 import {actionMergeIn as mergeInForm} from '../../shared/reducers/form';
 import View from './helpers/View';
 import Panel from './helpers/Panel';
+import Thread from './helpers/Thread';
 
 // Select state to use.
 const mapStateToProps =
@@ -29,6 +32,13 @@ const mergeProps =
   });
 
 class Builder extends Component {
+  static propTypes = {
+    builder: PropTypes.shape({
+      form: PropTypes.instanceOf(Map).isRequired
+    }).isRequired,
+    params: PropTypes.object
+  };
+
   render() {
     return (
       <View>
