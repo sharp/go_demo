@@ -5,6 +5,7 @@
     "description": "We would love to get to know you better!",
     "required": false,
 
+    "id": "short_text",
     "name": "Short Text"
   },
   {
@@ -13,6 +14,7 @@
     "description": "Please describe it within 50 characters",
     "required": false,
 
+    "id": "long_text",
     "name": "Long Text"
   },
   {
@@ -22,6 +24,7 @@
     "required": false,
     "choices": [],
 
+    "id": "multiple_choice",
     "name": "Multiple choice"
   },
   {
@@ -31,6 +34,7 @@
     "required": false,
     "choices": [],
 
+    "id": "picture_choice",
     "name": "Picture Choice"
   },
   {
@@ -38,6 +42,7 @@
     "question": "Please be as honest as you can be in the following questions",
     "description": "The answers you leave will have real impact.",
 
+    "id": "statement",
     "name": "Statement"
   },
   {
@@ -46,6 +51,7 @@
     "description": "The world is your oyster",
     "choices": [],
 
+    "id": "dropdown",
     "name": "Dropdown"
   },
   {
@@ -54,6 +60,7 @@
     "description": "If you look out the window right here, right now, are you getting a tan?",
     "required": false,
 
+    "id": "yes_no",
     "name": "Yes / No"
   },
   {
@@ -61,6 +68,7 @@
     "question": "How old is your oldest cat?",
     "description": "We want to know because... Science.",
 
+    "id": "number",
     "name": "Number"
   },
   {
@@ -68,12 +76,14 @@
     "question": "What would you rate \"Babysitter 2000\"?",
     "description": "Be honest, we will not cry, we promise!",
 
+    "id": "rating",
     "name": "Rating"
   },
   {
     "type": "opinion_scale",
     "question": "What do you think of Typeform I/O?",
 
+    "id": "opinion_scale",
     "name": "Opinion Scale"
   },
   {
@@ -82,6 +92,7 @@
     "description": "We will only spam you if you have green hair.",
     "required": true,
 
+    "id": "email",
     "name": "Email"
   },
   {
@@ -90,6 +101,7 @@
     "description": "Make sure it's valid",
     "required": false,
 
+    "id": "website",
     "name": "Website"
   },
   {
@@ -98,6 +110,7 @@
     "description": "Don't do evil",
     "required": true,
 
+    "id": "legal",
     "name": "Legal"
   }
 ]
