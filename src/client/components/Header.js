@@ -4,7 +4,11 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {Map} from 'immutable';
 import css from 'react-css-modules';
-import {MERGE_IN} from '../../shared/reducers/form';
+import uuid from 'node-uuid';
+import {
+  MERGE_IN,
+  actionAdd as addForm
+} from '../../shared/reducers/form';
 import {update} from '../actions';
 import Icon from './helpers/Icon';
 import styles from '../styles/header.css';
@@ -19,7 +23,7 @@ const mapStateToProps =
 // actions -> update
 const mapDispatchToProps =
   dispatch => ({
-    actions: bindActionCreators({update}, dispatch)
+    actions: bindActionCreators({update, addForm}, dispatch)
   });
 
 // Keep clean components props.
@@ -35,13 +39,23 @@ const mergeProps =
 class Header extends Component {
   static propTypes = {
     builder: PropTypes.shape({
-      form: PropTypes.instanceOf(Map).isRequired
+      form: PropTypes.instanceOf(Map).isRequired,
+      actions: PropTypes.object.isRequired
     }).isRequired,
-    location: PropTypes.shape({
-      pathname: PropTypes.string.isRequired
-    }),
+    location: PropTypes.object,
+    history: PropTypes.object,
     params: PropTypes.object
   };
+
+  addFormToCollection() {
+    const id = uuid.v4();
+    this.props.builder.actions.addForm({
+      id,
+      name: 'Enter your title...',
+      description: 'Enter your description...'
+    });
+    this.props.history.pushState(null, `/form/${id}`);
+  }
 
   updateForm() {
     const {builder: {form, actions}, params: {id}} = this.props;
@@ -57,7 +71,16 @@ class Header extends Component {
   renderNav(path) {
     if (path === '/') {
       return (
-        <div styleName="tab-empty"></div>
+        <div styleName="tab-container">
+          <div onClick={() => this.addFormToCollection()} styleName="tab">
+            <div styleName="icon-center">
+              <div styleName="icon-fix-padding">
+                <Icon type="add" size="24"/>
+              </div>
+              <Icon type="assignment" size="32"/>
+            </div>
+          </div>
+        </div>
       );
     }
     return (

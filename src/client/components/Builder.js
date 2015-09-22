@@ -11,6 +11,7 @@ import View from './helpers/View';
 import Panel from './helpers/Panel';
 import Thread from './helpers/Thread';
 import Iframe from './helpers/Iframe';
+import Input from './helpers/Input';
 
 // Select state to use.
 const mapStateToProps =
@@ -38,6 +39,11 @@ const mergeProps =
     }
   });
 
+const onBlur = (path, actions, name) => event => {
+  const value = event.target.value;
+  return actions.mergeInForm(path, new Map({[name]: value}));
+};
+
 class Builder extends Component {
   static propTypes = {
     builder: PropTypes.shape({
@@ -63,6 +69,23 @@ class Builder extends Component {
     return (
       <View>
         <Panel type="half-first">
+          <div style={{
+            margin: '.2rem .4rem .6rem .4rem',
+            background: '#fff',
+            padding: '1.6rem',
+            boxShadow: '0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12)'
+          }}>
+            <Input
+              type="text"
+              value={form.getIn(['collection', id, 'name'])}
+              onBlur={onBlur([id], actions, 'name')}
+              />
+            <Input
+              type="text"
+              value={form.getIn(['collection', id, 'description'])}
+              onBlur={onBlur([id], actions, 'description')}
+              />
+          </div>
           {/* TODO: fix this... */}
           <div style={{margin: '.2rem 0 .4rem'}}>
             <Thread
@@ -81,7 +104,7 @@ class Builder extends Component {
         <Panel type="half-second">
           <Iframe
             builder={builder}
-            entry={builder.form.getIn(['collection', id])}/>
+            entry={builder.form.getIn(['collection', id], new Map())}/>
         </Panel>
       </View>
     );
