@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import css from 'react-css-modules';
 import {Map} from 'immutable';
 import styles from '../../styles/iframe.css';
+import NoPreview from '../helpers/NoPreview';
 
 export class Iframe extends Component {
   static propTypes = {
@@ -24,7 +25,7 @@ export class Iframe extends Component {
             .first();
         return (
           <iframe
-            src={link.get('href')}
+            src={link && link.get('href')}
             frameBorder="0"
             allowFullScreen
             style={{width: '100%', height: '100%'}}></iframe>
@@ -32,7 +33,7 @@ export class Iframe extends Component {
       }
 
       return (
-        <div>no preview... :[</div>
+        <NoPreview height={window.innerHeight - 96}/>
       );
     }
 
