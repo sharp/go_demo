@@ -91,7 +91,19 @@ export default function form(state = INITIAL_STATE, action = {}) {
   case REMOVE:
     return remove(state, action.msg);
   case MERGE_IN:
-    return mergeIn(state, action.msg.path, action.msg.value);
+    const {type, create, ready, result, msg: {path, value}} = action;
+    const obj = {
+      path,
+      value: {
+        ...value,
+        result
+      }
+    };
+    const update =
+      (ready)
+        ? {type, msg: obj}
+        : action;
+    return mergeIn(state, update.msg.path, update.msg.value);
   case REMOVE_IN:
     return removeIn(state, action.msg.path, action.msg.value);
   default:
