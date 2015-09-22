@@ -21,7 +21,7 @@
     "name": "Customer Satisfaction Survey",
     "description": "Please help us serve you better by taking two minutes to tell us about your product and service experience so far. We appreciate your business and want to make sure we meet your expectations.",
     "fields": {
-      "_$$1":{
+      "_2_1":{
         "type": "short_text",
         "question": "What is your name?",
         "description": "We would love to get to know you better!",
@@ -38,7 +38,7 @@
     "name": "Instructor & Course Evaluation Form",
     "description": "",
     "fields": {
-      "_$$1":{
+      "_3_1":{
         "type": "short_text",
         "question": "What is your name?",
         "description": "We would love to get to know you better!",
