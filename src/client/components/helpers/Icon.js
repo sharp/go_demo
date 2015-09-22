@@ -64,6 +64,10 @@ export const select =
       return (
         <g><path d="M12 8l-6 6 1.41 1.41 4.59-4.58 4.59 4.58 1.41-1.41z"></path></g>
       );
+    case 'assignment':
+      return (
+        <g><path d="M19 3h-4.18c-.42-1.16-1.52-2-2.82-2-1.3 0-2.4.84-2.82 2h-4.18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14h-7v-2h7v2zm3-4h-10v-2h10v2zm0-4h-10v-2h10v2z"></path></g>
+      );
     // updated
     case 'short_text':
     case 'long_text':
