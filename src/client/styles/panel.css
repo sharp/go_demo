@@ -1,0 +1,39 @@
+.panel {
+  padding: .4rem;
+}
+
+.half-first {
+  composes: panel;
+  flex-basis: 50%;
+  padding-right: .1rem;
+}
+
+.half-second {
+  composes: panel;
+  flex-basis: 50%;
+  padding-left: .1rem;
+}
+
+.two_one-first {
+  composes: panel;
+  flex-basis: calc((100% / 3) * 2);
+  padding-right: .1rem;
+}
+
+.two_one-second {
+  composes: panel;
+  flex-basis: calc(100% / 3);
+  padding-left: .1rem;
+}
+
+.three_one-first {
+  composes: panel;
+  flex-basis: calc((100% / 4) * 3);
+  padding-right: .1rem;
+}
+
+.three_one-second {
+  composes: panel;
+  flex-basis: calc(100% / 4);
+  padding-left: .1rem;
+}

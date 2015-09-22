@@ -1,0 +1,34 @@
+.container {
+  flex-basis: calc(100% / 3);
+}
+
+.base {
+  composes: base-text from './shared.css';
+  composes: shadow-2p from './shared.css';
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  margin: .4rem;
+  border-radius: 2px;
+}
+
+.supporting {
+  composes: transition-button from './shared.css';
+  background-color: #fff;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  overflow: hidden;
+  padding: 1.6rem;
+  cursor: pointer;
+}
+
+.supporting:hover {
+  background-color: rgba(139, 203, 202, 0.2);
+}
+
+.supporting:active {
+  background-color: rgba(139, 203, 202, 0.4);
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+}

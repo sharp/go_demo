@@ -1,0 +1,21 @@
+/* Colors */
+.color-main {
+  color: rgb(139, 203, 202);
+}
+
+.base-text {
+  color: rgb(97, 97, 97);
+}
+
+.supp-text {
+  color: rgba(0, 0, 0, .54);
+}
+
+/* FX */
+.shadow-2p {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.transition-button {
+  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+}

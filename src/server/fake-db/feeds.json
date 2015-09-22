@@ -1,0 +1,58 @@
+[
+  {
+    "id": "_1",
+    "count": 1,
+    "type": "default",
+    "title": "Hi !",
+    "icon": "messenger",
+    "msg": false
+  },
+  {
+    "id": "_2",
+    "count": 2,
+    "type": "info",
+    "title": "Info",
+    "icon": "info-outline",
+    "msg": "Your account expire in 45 days."
+  },
+  {
+    "id": "_3",
+    "count": 3,
+    "type": "answer",
+    "title": "Answer",
+    "icon": "check",
+    "msg": "Customer feedback - received a new answer !"
+  },
+  {
+    "id": "_4",
+    "count": 4,
+    "type": "update",
+    "title": "Update",
+    "icon": "cloud-done",
+    "msg": "Customer feedback - has just been updated."
+  },
+  {
+    "id": "_5",
+    "count": 5,
+    "type": "answer",
+    "title": "Answer",
+    "icon": "check",
+    "msg": "Customer Satisfaction Survey - received a new answer !"
+  },
+  {
+    "id": "_6",
+    "count": 6,
+    "type": "answer",
+    "title": "Answer",
+    "icon": "check",
+    "msg": "Customer Satisfaction Survey - received a new answer !"
+  },
+  {
+    "id": "_7",
+    "count": 7,
+    "type": "grade",
+    "title": "Grade 100 answers!",
+    "icon": "grade",
+    "msg": "Your form Customer Satisfaction Survey received 100 answers !"
+  }
+]

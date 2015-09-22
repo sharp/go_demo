@@ -1,0 +1,77 @@
+{
+  "Pe3yfePcCQ": {
+    "id": "Pe3yfePcCQ",
+    "name": "Generated Form !",
+    "description": "This form was generated using `npm -i typeform-builder` (even if v0.1.0 !).",
+    "fields": {
+      "242774": {
+        "type": "short_text",
+        "question": "What is your name?",
+        "description": "We would love to get to know you better!",
+        "required": false,
+        "id": "242774",
+        "formId": "Pe3yfePcCQ",
+        "name": "Short Text"
+      },
+      "242775": {
+        "type": "long_text",
+        "question": "What is the story of your life?",
+        "description": "Please describe it within 50 characters",
+        "required": false,
+        "id": "242775",
+        "formId": "Pe3yfePcCQ",
+        "name": "Long Text"
+      },
+      "242776": {
+        "type": "yes_no",
+        "question": "Is it sunny today?",
+        "description": "If you look out the window right here, right now, are you getting a tan?",
+        "required": false,
+        "id": "242776",
+        "formId": "Pe3yfePcCQ",
+        "name": "Yes / No"
+      },
+      "242777": {
+        "type": "rating",
+        "question": "What would you rate \"Babysitter 2000\"?",
+        "description": "Be honest, we will not cry, we promise!",
+        "id": "242777",
+        "formId": "Pe3yfePcCQ",
+        "name": "Rating"
+      },
+      "242778": {
+        "type": "opinion_scale",
+        "question": "What do you think of Typeform I/O?",
+        "id": "242778",
+        "formId": "Pe3yfePcCQ",
+        "name": "Opinion Scale"
+      },
+      "242779": {
+        "type": "email",
+        "question": "What is your email?",
+        "description": "We will only spam you if you have green hair.",
+        "required": true,
+        "id": "242779",
+        "formId": "Pe3yfePcCQ",
+        "name": "Email"
+      },
+      "242780": {
+        "type": "website",
+        "question": "What is your website URL?",
+        "description": "Make sure it's valid",
+        "required": false,
+        "id": "242780",
+        "formId": "Pe3yfePcCQ",
+        "name": "Website"
+      }
+    },
+    "result": {
+      "_links": [
+        {
+          "rel": "form_render",
+          "href": "https://forms.typeform.io/to/Pe3yfePcCQ"
+        }
+      ]
+    }
+  }
+}
