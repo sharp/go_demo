@@ -1,0 +1,70 @@
+.container {
+  flex-basis: 100%;
+}
+
+.base {
+  composes: base-text from './shared.css';
+  composes: shadow-2p from './shared.css';
+  margin: 0.2rem .4rem 0 .4rem;
+  font-size: 1rem;
+  border-radius: 2px;
+}
+
+.base-no-spacing {
+  composes: base;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  background-color: #fff;
+  padding: .8rem 1.6rem;
+}
+
+.header-no-bottom {
+  composes: header;
+  padding-bottom: 0;
+}
+
+.header-container {
+  flex: 1;
+  align-self: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  font-size: 1.4rem;
+  padding-left: 1.6rem;
+}
+
+.header-ui-elem {
+  composes: transition-button from './shared.css';
+  display: flex;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 0.8rem;
+}
+
+.header-ui-elem:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.header-ui-elem:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.header-ui-elem-icon {
+  align-self: center;
+}
+
+.inputs-container {
+  background-color: #fff;
+  padding: 1.6rem 1.6rem 1.6rem;
+}
