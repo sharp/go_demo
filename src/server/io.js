@@ -55,6 +55,7 @@ export const fetchForm = schema => {
 };
 
 export const handleRemoteAction = action => {
+  if (TYPEFORM_API_KEY === undefined) return action;
   if (action.create) {
     const value = formSchema(action);
     return {
