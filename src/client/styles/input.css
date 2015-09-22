@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+}
+
+.base {
+  margin: 0 0 .8rem;
+}
+
+.input-type-text {
+  composes: base;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  font-size: 1.6rem;
+  padding: .4rem 0;
+  width: 100%;
+  color: inherit;
+  outline: none;
+}
