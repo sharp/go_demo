@@ -8,11 +8,15 @@ import {
 import {
   actionSetList as setFeedList
 } from '../../shared/reducers/feed';
+import {
+  emitOnRemoteAction
+} from '../../shared/middlewares';
 import setStore from '../../shared/setStore';
 import Header from './Header';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
-const store = setStore();
+
+const store = setStore([emitOnRemoteAction(socket)]);
 
 socket.on('state', state => {
   store.dispatch(setFormReference(state.form.reference));

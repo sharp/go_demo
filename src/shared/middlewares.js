@@ -28,6 +28,14 @@ export const readyStatePromise = store => next => action => { // eslint-disable-
   );
 };
 
+export const emitOnRemoteAction = socket => store => next => action => {
+  const {remote, ...clean} = action;
+  if (remote) {
+    socket.emit('action', clean);
+  }
+  return next(action);
+};
+
 /* eslint-disable no-unused-vars, no-console */
 export const logger = store => next => action => {
   console.log(chalk.gray('| action -> type ->', action.type));
