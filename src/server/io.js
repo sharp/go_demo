@@ -1,6 +1,7 @@
 import Server from 'socket.io';
 import fetch from 'node-fetch';
 import chalk from 'chalk';
+import localtunnel from 'localtunnel';
 import setStore from '../shared/setStore';
 import {
   actionSetReference as setFormReference,
@@ -24,6 +25,8 @@ import {
   apiVersion,
   submitEndpoint
 } from './constants';
+
+let publicUrl = '';
 
 const spreadIo = io => store => next => action => { // eslint-disable-line no-unused-vars
   return next(action);
@@ -118,3 +121,9 @@ export default function createIoServer() {
   });
 }
 
+localtunnel(3000, (err, tunnel) => {
+  if (err) {
+    throw new Error(err);
+  }
+  publicUrl = tunnel.url;
+});
