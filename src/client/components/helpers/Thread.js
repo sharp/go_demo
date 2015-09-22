@@ -5,6 +5,7 @@ import styles from '../../styles/thread.css';
 import Card from './Card';
 import Feed from './Feed';
 import Button from './Button';
+import Field from './Field';
 
 export class Thread extends Component {
   static propTypes = {
@@ -13,30 +14,32 @@ export class Thread extends Component {
     options: PropTypes.object
   };
   render() {
-    const {type, entries = []} = this.props;
+    const {type, entries = [], options = {}} = this.props;
     return (
       <div styleName="container">
         {entries.map(entry => {
+          const clean = {
+            key: entry.get('id'),
+            entry,
+            options
+          };
+
           switch (type) {
           case 'card':
             return (
-              <Card
-                key={entry.get('id')}
-                entry={entry}
-                options={this.props.options} />
+              <Card {...clean} />
             );
           case 'feed':
             return (
-              <Feed
-                key={entry.get('id')}
-                entry={entry} />
+              <Feed {...clean} />
             );
           case 'button':
             return (
-              <Button
-                key={entry.get('type')}
-                entry={entry}
-                options={this.props.options}/>
+              <Button {...clean} />
+            );
+          case 'field':
+            return (
+              <Field {...clean} />
             );
           default:
             return (

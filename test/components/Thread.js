@@ -19,7 +19,7 @@ describe('Thread', () => {
     });
     it('should handle invalid props -> type', () => {
       shallowRenderer.render(
-        <Thread type="__what_ever__" entries={['a']}/>
+        <Thread type="__what_ever__" entries={[new Map({id: '_1'})]}/>
       );
       const result = shallowRenderer.getRenderOutput();
       expect(result.props.children.length).toBe(1);
@@ -32,7 +32,6 @@ describe('Thread', () => {
       const result = shallowRenderer.getRenderOutput();
       expect(result.props.children).toEqual([]);
     });
-
     it('should handle empty props -> entries', () => {
       shallowRenderer.render(
         <Thread entries={[]}/>
@@ -42,17 +41,14 @@ describe('Thread', () => {
     });
     it('should handle props -> entries', () => {
       shallowRenderer.render(
-        <Thread entries={['a', 'b', 'c']}/>
+        <Thread entries={[
+          new Map({id: '_1'}),
+          new Map({id: '_2'}),
+          new Map({id: '_3'})
+        ]}/>
       );
       const result = shallowRenderer.getRenderOutput();
       expect(result.props.children.length).toBe(3);
-    });
-    it('should handle immutable props -> entries', () => {
-      shallowRenderer.render(
-        <Thread entries={List(['a', 'b', 'c'])}/>
-      );
-      const result = shallowRenderer.getRenderOutput();
-      expect(result.props.children.size).toBe(3);
     });
   });
 });
