@@ -69,7 +69,7 @@ export const handleRemoteAction = action => {
 // TODO: make better warn msg + add typeform link.
 const noKey = `
   WARN: You need to set the environment variable TYPEFORM_API_KEY
-  for this application to see forms previews.
+  for this application to generate forms.
 `;
 
 export default function createIoServer() {
