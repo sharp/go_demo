@@ -1,53 +1,77 @@
 {
-  "_1": {
-    "id": "_1",
-    "name": "Customer feedback",
-    "description": "Thanks for shopping with Beardyman Inc. We'd love to know your thoughts on the service you received.",
+  "Pe3yfePcCQ": {
+    "id": "Pe3yfePcCQ",
+    "name": "Generated Form !",
+    "description": "This form was generated using `npm -i typeform-builder` (even if v0.1.0 !).",
     "fields": {
-      "_1_1":{
+      "242774": {
         "type": "short_text",
         "question": "What is your name?",
         "description": "We would love to get to know you better!",
         "required": false,
-
-        "id": "_1_1",
-        "formId": "_1",
+        "id": "242774",
+        "formId": "Pe3yfePcCQ",
         "name": "Short Text"
-      }
-    }
-  },
-  "_2": {
-    "id": "_2",
-    "name": "Customer Satisfaction Survey",
-    "description": "Please help us serve you better by taking two minutes to tell us about your product and service experience so far. We appreciate your business and want to make sure we meet your expectations.",
-    "fields": {
-      "_2_1":{
-        "type": "short_text",
-        "question": "What is your name?",
-        "description": "We would love to get to know you better!",
+      },
+      "242775": {
+        "type": "long_text",
+        "question": "What is the story of your life?",
+        "description": "Please describe it within 50 characters",
         "required": false,
-
-        "id": "_2_1",
-        "formId": "_2",
-        "name": "Short Text"
-      }
-    }
-  },
-  "_3": {
-    "id": "_3",
-    "name": "Instructor & Course Evaluation Form",
-    "description": "",
-    "fields": {
-      "_3_1":{
-        "type": "short_text",
-        "question": "What is your name?",
-        "description": "We would love to get to know you better!",
+        "id": "242775",
+        "formId": "Pe3yfePcCQ",
+        "name": "Long Text"
+      },
+      "242776": {
+        "type": "yes_no",
+        "question": "Is it sunny today?",
+        "description": "If you look out the window right here, right now, are you getting a tan?",
         "required": false,
-
-        "id": "_3_1",
-        "formId": "_3",
-        "name": "Short Text"
+        "id": "242776",
+        "formId": "Pe3yfePcCQ",
+        "name": "Yes / No"
+      },
+      "242777": {
+        "type": "rating",
+        "question": "What would you rate \"Babysitter 2000\"?",
+        "description": "Be honest, we will not cry, we promise!",
+        "id": "242777",
+        "formId": "Pe3yfePcCQ",
+        "name": "Rating"
+      },
+      "242778": {
+        "type": "opinion_scale",
+        "question": "What do you think of Typeform I/O?",
+        "id": "242778",
+        "formId": "Pe3yfePcCQ",
+        "name": "Opinion Scale"
+      },
+      "242779": {
+        "type": "email",
+        "question": "What is your email?",
+        "description": "We will only spam you if you have green hair.",
+        "required": true,
+        "id": "242779",
+        "formId": "Pe3yfePcCQ",
+        "name": "Email"
+      },
+      "242780": {
+        "type": "website",
+        "question": "What is your website URL?",
+        "description": "Make sure it's valid",
+        "required": false,
+        "id": "242780",
+        "formId": "Pe3yfePcCQ",
+        "name": "Website"
       }
+    },
+    "result": {
+      "_links": [
+        {
+          "rel": "form_render",
+          "href": "https://forms.typeform.io/to/Pe3yfePcCQ"
+        }
+      ]
     }
   }
 }
