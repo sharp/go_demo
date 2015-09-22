@@ -1,12 +1,19 @@
 import React, {Component, PropTypes} from 'react';
 import css from 'react-css-modules';
 import {Map} from 'immutable';
+import Icon from './Icon';
 import styles from '../../styles/button.css';
 
 export const Inner = ({entry}) => {
   return (
     <div>
-      <div>{entry.get('name')}</div>
+      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <Icon type="add" size="20" />
+        <Icon type={entry.get('type')} size="32" />
+      </div>
+      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div style={{fontSize: '1.4rem', padding: '0 0rem', lineHeight: '2.8rem'}}>{entry.get('name')}</div>
+      </div>
     </div>
   );
 };
