@@ -59,10 +59,7 @@ export const handleRemoteAction = action => {
     const value = formSchema(action);
     return {
       ...action,
-      promise: fetchForm(value).then(res => {
-        console.log('res', res);
-        return res;
-      })
+      promise: fetchForm(value).then(res => res)
     };
   }
 
