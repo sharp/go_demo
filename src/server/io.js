@@ -29,6 +29,43 @@ const spreadIo = io => store => next => action => { // eslint-disable-line no-un
   return next(action);
 };
 
+export const formSchema = action => {
+  const {fields} = action.msg.value;
+  return {
+    title: action.msg.value.name,
+    webhook_submit_url: publicUrl + submitEndpoint,
+    fields: Object.keys(fields).map(current => {
+      const {id, formId, name, ...clean} = fields[current];
+      return clean;
+    })
+  };
+};
+
+export const fetchForm = schema => {
+  return fetch(`https://api.typeform.io/${apiVersion}/forms`, {
+    method: 'POST',
+    headers: {
+      'X-API-TOKEN': TYPEFORM_API_KEY
+    },
+    body: JSON.stringify(schema)
+  }).then(response => response.json());
+};
+
+export const handleRemoteAction = action => {
+  if (action.create) {
+    const value = formSchema(action);
+    return {
+      ...action,
+      promise: fetchForm(value).then(res => {
+        console.log('res', res);
+        return res;
+      })
+    };
+  }
+
+  return action;
+};
+
 // TODO: make better warn msg + add typeform link.
 const noKey = `
   WARN: You need to set the environment variable TYPEFORM_API_KEY
@@ -75,5 +112,9 @@ export default function createIoServer() {
   io.on('connection', socket => {
     // Send initial state to remote app.
     socket.emit('state', store.getState());
+
+    // Dispatch remote action throw local store.
+    socket.on('action', action => store.dispatch(handleRemoteAction(action)));
   });
 }
+
