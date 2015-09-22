@@ -4,13 +4,13 @@
 
 .half-first {
   composes: panel;
-  width: 50%;
+  flex-basis: 50%;
   padding-right: .1rem;
 }
 
 .half-second {
   composes: panel;
-  width: 50%;
+  flex-basis: 50%;
   padding-left: .1rem;
 }
 
