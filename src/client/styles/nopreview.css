@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-container {
+  text-align: center;
+  color: rgb(139, 203, 202);
+  font-size: 1.8rem;
+  padding-top: 1.6rem;
+}
+
+.message {
+  margin-top: 3.2rem;
+}
