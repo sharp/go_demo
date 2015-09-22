@@ -2,11 +2,15 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import uuid from 'node-uuid';
-import {Map} from 'immutable';
-import {actionMergeIn as mergeInForm} from '../../shared/reducers/form';
+import {Map, List} from 'immutable';
+import {
+  actionMergeIn as mergeInForm,
+  actionRemoveIn as removeInForm
+} from '../../shared/reducers/form';
 import View from './helpers/View';
 import Panel from './helpers/Panel';
 import Thread from './helpers/Thread';
+import Iframe from './helpers/Iframe';
 
 // Select state to use.
 const mapStateToProps =
@@ -18,7 +22,10 @@ const mapStateToProps =
 // form -> actions -> mergeIn
 const mapDispatchToProps =
   dispatch => ({
-    actions: bindActionCreators({mergeInForm}, dispatch)
+    actions: bindActionCreators({
+      mergeInForm,
+      removeInForm
+    }, dispatch)
   });
 
 // Keep clean components props.
@@ -49,20 +56,32 @@ class Builder extends Component {
         .set('id', __uuid)
     );
   }
+
   render() {
-    const {builder: {form}} = this.props;
+    const {builder, params: {id}} = this.props;
+    const {form, actions} = builder;
     return (
       <View>
         <Panel type="half-first">
+          {/* TODO: fix this... */}
+          <div style={{margin: '.2rem 0 .4rem'}}>
+            <Thread
+              type="field"
+              entries={form.getIn(['collection', id, 'fields'], new List()).toList()}
+              options={{actions: actions}}
+              />
+          </div>
           <Thread
             type="button"
-            entries={form.get('reference').toList().take(6)}
+            entries={form.get('reference').toList()}
             options={{
               onClick: entry => this.addFieldToForm(entry)
             }}/>
         </Panel>
         <Panel type="half-second">
-          right
+          <Iframe
+            builder={builder}
+            entry={builder.form.getIn(['collection', id])}/>
         </Panel>
       </View>
     );
