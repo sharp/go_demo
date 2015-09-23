@@ -38,9 +38,9 @@ export const spreadIo = io => store => next => action => { // eslint-disable-lin
 };
 
 export const emitOnRemoteAction = socket => store => next => action => {
-  const {client, ...clean} = action;
+  const {client} = action;
   if (client) {
-    socket.emit('action', clean);
+    socket.emit('action', action);
   }
   return next(action);
 };

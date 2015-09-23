@@ -30,7 +30,7 @@ import {
 let publicUrl = '';
 
 export const formSchema = action => {
-  const {fields} = action.msg.value;
+  const {fields = []} = action.msg.value;
   return {
     title: action.msg.value.name,
     webhook_submit_url: publicUrl + submitEndpoint,
@@ -53,10 +53,11 @@ export const fetchForm = schema => {
 
 export const handleRemoteAction = action => {
   if (TYPEFORM_API_KEY === undefined) return action;
-  if (action.create) {
-    const value = formSchema(action);
+  if (action.client) {
+    const {client, ...clean} = action;
+    const value = formSchema(clean);
     return {
-      ...action,
+      ...clean,
       promise: fetchForm(value).then(res => res)
     };
   }
