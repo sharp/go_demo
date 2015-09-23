@@ -28,6 +28,15 @@ export const readyStatePromise = store => next => action => { // eslint-disable-
   );
 };
 
+export const spreadIo = io => store => next => action => { // eslint-disable-line no-unused-vars
+  const returnValue = next(action);
+  const {spread, ...clean} = action;
+
+  if (spread) io.emit('update', clean);
+
+  return returnValue;
+};
+
 export const emitOnRemoteAction = socket => store => next => action => {
   const {client, ...clean} = action;
   if (client) {

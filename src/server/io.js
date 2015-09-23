@@ -18,6 +18,7 @@ import {
   thunk,
   vanillaPromise,
   readyStatePromise,
+  spreadIo,
   logger
 } from '../shared/middlewares';
 import {
@@ -27,15 +28,6 @@ import {
 } from './constants';
 
 let publicUrl = '';
-
-const spreadIo = io => store => next => action => { // eslint-disable-line no-unused-vars
-  const returnValue = next(action);
-  const {spread, ...clean} = action;
-
-  if (spread) io.emit('update', clean);
-
-  return returnValue;
-};
 
 export const formSchema = action => {
   const {fields} = action.msg.value;
