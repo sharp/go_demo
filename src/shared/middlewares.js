@@ -37,7 +37,7 @@ export const spreadIo = io => store => next => action => { // eslint-disable-lin
   return returnValue;
 };
 
-export const emitOnRemoteAction = socket => store => next => action => {
+export const emitOnRemoteAction = socket => store => next => action => { // eslint-disable-line no-unused-vars
   const {client} = action;
   if (client) {
     socket.emit('action', action);
