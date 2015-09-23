@@ -1,36 +1,37 @@
 import React, {Component, PropTypes} from 'react';
 import css from 'react-css-modules';
-import {Map} from 'immutable';
+import {Record} from 'immutable';
 import styles from '../../styles/feed.css';
 import Icon from './Icon';
 
 export class Feed extends Component {
   static propTypes = {
-    entry: PropTypes.instanceOf(Map).isRequired
+    entry: PropTypes.instanceOf(Record).isRequired
   };
 
   render() {
     const {entry} = this.props;
-    const type = entry.get('type');
-    const msg = entry.get('msg');
+    const type = entry.getIn(['content', 'type']);
+    const text = entry.getIn(['content', 'text']);
+
     return (
       <div styleName="container">
         <div styleName={type}>
           <div styleName={
-            (msg)
+            (text)
               ? 'header-no-bottom'
               : 'header'
           }>
             <div styleName={`header-${type}`}>
               <div>
-                <Icon type={entry.get('icon')}/>
+                <Icon type={entry.getIn(['content', 'icon'])}/>
               </div>
-              <div styleName={`title-${type}`}>{entry.get('title')}</div>
+              <div styleName={`title-${type}`}>{entry.getIn(['content', 'title'])}</div>
             </div>
           </div>
-          {(msg)
+          {(text)
             ? <div styleName={`supporting-${type}`}>
-                {msg}
+                {text}
               </div>
             : null}
         </div>

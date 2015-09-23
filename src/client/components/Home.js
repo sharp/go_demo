@@ -48,7 +48,7 @@ class Home extends Component {
         <Panel type="three_one-second">
           <Thread
             type="feed"
-            entries={feed.sortBy(n => n.get('count')).reverse()}/>
+            entries={feed.get('list').sortBy(n => n.get('created_at')).reverse()}/>
         </Panel>
       </View>
     );

@@ -21,7 +21,7 @@ const store = setStore([emitOnRemoteAction(socket)]);
 socket.on('state', state => {
   store.dispatch(setFormReference(state.form.reference));
   store.dispatch(setFormCollection(state.form.collection));
-  store.dispatch(setFeedList(state.feed));
+  store.dispatch(setFeedList(state.feed.list));
 });
 
 export default class Root extends Component {
