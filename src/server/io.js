@@ -18,6 +18,7 @@ import {
   thunk,
   vanillaPromise,
   readyStatePromise,
+  spreadIo,
   logger
 } from '../shared/middlewares';
 import {
@@ -28,12 +29,8 @@ import {
 
 let publicUrl = '';
 
-const spreadIo = io => store => next => action => { // eslint-disable-line no-unused-vars
-  return next(action);
-};
-
 export const formSchema = action => {
-  const {fields} = action.msg.value;
+  const {fields = []} = action.msg.value;
   return {
     title: action.msg.value.name,
     webhook_submit_url: publicUrl + submitEndpoint,
@@ -56,10 +53,11 @@ export const fetchForm = schema => {
 
 export const handleRemoteAction = action => {
   if (TYPEFORM_API_KEY === undefined) return action;
-  if (action.create) {
-    const value = formSchema(action);
+  if (action.client) {
+    const {client, ...clean} = action;
+    const value = formSchema(clean);
     return {
-      ...action,
+      ...clean,
       promise: fetchForm(value).then(res => res)
     };
   }
@@ -91,23 +89,14 @@ export default function createIoServer() {
     spreadIo(io),
     logger
   ]);
+
+  // Set states.
   const fieldReference = require('./fake-db/fields.json');
   const formCollection = require('./fake-db/forms.json');
   const feedCollection = require('./fake-db/feeds.json');
   store.dispatch(setFormReference(fieldReference));
   store.dispatch(setFormCollection(formCollection));
   store.dispatch(setFeedList(feedCollection));
-
-  // store <-> io.
-  // ----------------------------------
-
-  // Listen to store change and dispatch update using io.
-  store.subscribe(() => {
-    console.log(chalk.gray('store -> update')); // eslint-disable-line no-console
-
-    // TODO: fine tuning io.emit(s)
-    return io.emit('state', store.getState());
-  });
 
   // Handle new connection.
   io.on('connection', socket => {
