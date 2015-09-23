@@ -5,7 +5,7 @@
   "scripts": {
     "start": "babel-node ./src/server/index.js",
     "lint": "eslint ./src",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
