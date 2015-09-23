@@ -1,58 +1,72 @@
 [
   {
     "id": "_1",
-    "count": 1,
-    "type": "default",
-    "title": "Hi !",
-    "icon": "messenger",
-    "msg": false
+    "created_at": 1,
+    "content": {
+      "type": "default",
+      "title": "Hi !",
+      "text": false,
+      "icon": "messenger"
+    }
   },
   {
     "id": "_2",
-    "count": 2,
-    "type": "info",
-    "title": "Info",
-    "icon": "info-outline",
-    "msg": "Your account expire in 45 days."
+    "created_at": 2,
+    "content": {
+      "type": "info",
+      "title": "Info",
+      "text": "Your account expire in 45 days.",
+      "icon": "info-outline"
+    }
   },
   {
     "id": "_3",
-    "count": 3,
-    "type": "answer",
-    "title": "Answer",
-    "icon": "check",
-    "msg": "Customer feedback - received a new answer !"
+    "created_at": 3,
+    "content": {
+      "type": "answer",
+      "title": "Answer",
+      "text": "Customer feedback - received a new answer !",
+      "icon": "check"
+    }
   },
   {
     "id": "_4",
-    "count": 4,
-    "type": "update",
-    "title": "Update",
-    "icon": "cloud-done",
-    "msg": "Customer feedback - has just been updated."
+    "created_at": 4,
+    "content": {
+      "type": "update",
+      "title": "Update",
+      "text": "Customer feedback - has just been updated.",
+      "icon": "cloud-done"
+    }
   },
   {
     "id": "_5",
-    "count": 5,
-    "type": "answer",
-    "title": "Answer",
-    "icon": "check",
-    "msg": "Customer Satisfaction Survey - received a new answer !"
+    "created_at": 5,
+    "content": {
+      "type": "answer",
+      "title": "Answer",
+      "text": "Customer Satisfaction Survey - received a new answer !",
+      "icon": "check"
+    }
   },
   {
     "id": "_6",
-    "count": 6,
-    "type": "answer",
-    "title": "Answer",
-    "icon": "check",
-    "msg": "Customer Satisfaction Survey - received a new answer !"
+    "created_at": 6,
+    "content": {
+      "type": "answer",
+      "title": "Answer",
+      "text": "Customer Satisfaction Survey - received a new answer !",
+      "icon": "check"
+    }
   },
   {
     "id": "_7",
-    "count": 7,
-    "type": "grade",
-    "title": "Grade 100 answers!",
-    "icon": "grade",
-    "msg": "Your form Customer Satisfaction Survey received 100 answers !"
+    "created_at": 7,
+    "content": {
+      "type": "grade",
+      "title": "Grade 100 answers!",
+      "text": "Your form Customer Satisfaction Survey received 100 answers !",
+      "icon": "grade"
+    }
   }
 ]
