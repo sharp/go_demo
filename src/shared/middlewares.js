@@ -29,8 +29,8 @@ export const readyStatePromise = store => next => action => { // eslint-disable-
 };
 
 export const emitOnRemoteAction = socket => store => next => action => {
-  const {remote, ...clean} = action;
-  if (remote) {
+  const {client, ...clean} = action;
+  if (client) {
     socket.emit('action', clean);
   }
   return next(action);

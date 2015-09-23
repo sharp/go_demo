@@ -2,14 +2,14 @@ import {
   UPDATE
 } from './actionTypes';
 
-const REMOTE = {remote: true};
-const CREATE = {create: true};
+const CLIENT = {client: true};
+const SPREAD = {spread: true};
 
 // Server
 export const update =
   msg => ({
     type: UPDATE,
     ...msg,
-    ...REMOTE,
-    ...CREATE
+    ...CLIENT,
+    ...SPREAD
   });
