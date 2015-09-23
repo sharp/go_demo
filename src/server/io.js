@@ -29,7 +29,12 @@ import {
 let publicUrl = '';
 
 const spreadIo = io => store => next => action => { // eslint-disable-line no-unused-vars
-  return next(action);
+  const returnValue = next(action);
+  const {spread, ...clean} = action;
+
+  if (spread) io.emit('update', clean);
+
+  return returnValue;
 };
 
 export const formSchema = action => {
@@ -91,23 +96,14 @@ export default function createIoServer() {
     spreadIo(io),
     logger
   ]);
+
+  // Set states.
   const fieldReference = require('./fake-db/fields.json');
   const formCollection = require('./fake-db/forms.json');
   const feedCollection = require('./fake-db/feeds.json');
   store.dispatch(setFormReference(fieldReference));
   store.dispatch(setFormCollection(formCollection));
   store.dispatch(setFeedList(feedCollection));
-
-  // store <-> io.
-  // ----------------------------------
-
-  // Listen to store change and dispatch update using io.
-  store.subscribe(() => {
-    console.log(chalk.gray('store -> update')); // eslint-disable-line no-console
-
-    // TODO: fine tuning io.emit(s)
-    return io.emit('state', store.getState());
-  });
 
   // Handle new connection.
   io.on('connection', socket => {

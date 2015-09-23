@@ -24,6 +24,8 @@ socket.on('state', state => {
   store.dispatch(setFeedList(state.feed.list));
 });
 
+socket.on('update', action => store.dispatch(action));
+
 export default class Root extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired
