@@ -1,116 +1,53 @@
-[
-  {
-    "type": "short_text",
-    "question": "What is your name?",
-    "description": "We would love to get to know you better!",
-    "required": false,
-
-    "id": "short_text",
-    "name": "Short Text"
+{
+  "properties": {
+    "type": {
+      "type": "string",
+      "value": "",
+      "required": true
+    },
+    "question": {
+      "type": "string",
+      "value": "",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "value": null,
+      "required": false
+    },
+    "required": {
+      "type": "boolean",
+      "value": null,
+      "required": false
+    },
+    "tags": {
+      "type": "array",
+      "value": [],
+      "required": false
+    },
+    "choices": {
+      "type": "array",
+      "value": [],
+      "required": true
+    },
+    "steps": {
+      "type": "number",
+      "value": 5,
+      "required": true
+    }
   },
-  {
-    "type": "long_text",
-    "question": "What is the story of your life?",
-    "description": "Please describe it within 50 characters",
-    "required": false,
-
-    "id": "long_text",
-    "name": "Long Text"
-  },
-  {
-    "type": "multiple_choice",
-    "question": "How do you normally get to work?",
-    "description": "On most days...",
-    "required": false,
-    "choices": [],
-
-    "id": "multiple_choice",
-    "name": "Multiple choice"
-  },
-  {
-    "type": "picture_choice",
-    "question": "Which kitten is the cutest?",
-    "description": "The winning kitten will be rewarded with fish-for-a-lifetime",
-    "required": false,
-    "choices": [],
-
-    "id": "picture_choice",
-    "name": "Picture Choice"
-  },
-  {
-    "type": "statement",
-    "question": "Please be as honest as you can be in the following questions",
-    "description": "The answers you leave will have real impact.",
-
-    "id": "statement",
-    "name": "Statement"
-  },
-  {
-    "type": "dropdown",
-    "question": "Which country are you from?",
-    "description": "The world is your oyster",
-    "choices": [],
-
-    "id": "dropdown",
-    "name": "Dropdown"
-  },
-  {
-    "type": "yes_no",
-    "question": "Is it sunny today?",
-    "description": "If you look out the window right here, right now, are you getting a tan?",
-    "required": false,
-
-    "id": "yes_no",
-    "name": "Yes / No"
-  },
-  {
-    "type": "number",
-    "question": "How old is your oldest cat?",
-    "description": "We want to know because... Science.",
-
-    "id": "number",
-    "name": "Number"
-  },
-  {
-    "type": "rating",
-    "question": "What would you rate \"Babysitter 2000\"?",
-    "description": "Be honest, we will not cry, we promise!",
-
-    "id": "rating",
-    "name": "Rating"
-  },
-  {
-    "type": "opinion_scale",
-    "question": "What do you think of Typeform I/O?",
-
-    "id": "opinion_scale",
-    "name": "Opinion Scale"
-  },
-  {
-    "type": "email",
-    "question": "What is your email?",
-    "description": "We will only spam you if you have green hair.",
-    "required": true,
-
-    "id": "email",
-    "name": "Email"
-  },
-  {
-    "type": "website",
-    "question": "What is your website URL?",
-    "description": "Make sure it's valid",
-    "required": false,
-
-    "id": "website",
-    "name": "Website"
-  },
-  {
-    "type": "legal",
-    "question": "Please read and accept these terms & conditions",
-    "description": "Don't do evil",
-    "required": true,
-
-    "id": "legal",
-    "name": "Legal"
+  "fields": {
+    "short_text": ["type", "question", "description"],
+    "long_text": ["type", "question", "description"],
+    "multiple_choice": ["type", "question", "description", "choices"],
+    "picture_choice": ["type", "question", "description", "choices"],
+    "statement": ["type", "question", "description"],
+    "dropdown": ["type", "question", "description", "choices"],
+    "yes_no": ["type", "question", "description"],
+    "rating": ["type", "question", "description", "steps"],
+    "opinion_scale": ["type", "question", "description", "steps"],
+    "email": ["type", "question", "description"],
+    "website": ["type", "question", "description"],
+    "legal": ["type", "question", "description"]
   }
-]
+}
