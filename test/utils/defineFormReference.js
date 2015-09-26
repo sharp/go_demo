@@ -39,6 +39,7 @@ describe('Utils', () => {
           c: {value: 'C'}
         }
       };
+      expect(result.toJS()).toEqual(expected);
     });
   });
 });
