@@ -69,16 +69,17 @@ export const defineFieldShape =
  * @param schema {Object}
  * @returns {Object}
  */
-const defineFormReference = schema => {
-  const base = fromJS(schema);
+const defineFormReference =
+  schema => {
+    const base = fromJS(schema);
 
-  return base
-    .get('fields')
-    .keySeq()
-    .reduce((acc, current) => {
-      const shape = defineFieldShape(base, current);
-      return acc.set(current, shape);
-    }, new Map);
-};
+    return base
+      .get('fields')
+      .keySeq()
+      .reduce((acc, current) => {
+        const shape = defineFieldShape(base, current);
+        return acc.set(current, shape);
+      }, new Map);
+  };
 
 export default defineFormReference;
