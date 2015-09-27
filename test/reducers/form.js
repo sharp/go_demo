@@ -637,16 +637,6 @@ describe('Form', () => {
       const nextState = form(state);
       expect(nextState).toEqual(initialState);
     });
-    it('should ignore not ready action', () => {
-      const state = Map();
-      const action = {
-        type: SET_REFERENCE,
-        ready: false,
-        msg: '*'
-      };
-      const nextState = form(state, action);
-      expect(nextState.toJS()).toEqual({});
-    });
     it(`should handles ${SET_REFERENCE}`, () => {
       const state = Map();
       const action = {
