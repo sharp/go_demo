@@ -33,8 +33,9 @@ export const initialState = new InitialState;
 export const SET_REFERENCE = 'form/SET_REFERENCE';
 export const SET_COLLECTION = 'form/SET_COLLECTION';
 export const ADD = 'form/ADD';
-export const ADD_FIELD = 'form/ADD_FIELD';
 export const REMOVE = 'form/REMOVE';
+export const ADD_FIELD = 'form/ADD_FIELD';
+export const REMOVE_FIELD = 'form/REMOVE_FIELD';
 export const MERGE_IN = 'form/MERGE_IN';
 export const REMOVE_IN = 'form/REMOVE_IN';
 
@@ -54,6 +55,9 @@ export const actionRemove =
 
 export const actionAddField =
   (id, value) => ({type: ADD_FIELD, msg: {id, value}});
+
+export const actionRemoveField =
+  (path, value) => ({type: REMOVE_IN, msg: {id, value}});
 
 export const actionMergeIn =
   (path, value) => ({type: MERGE_IN, msg: {path, value}});
@@ -146,14 +150,6 @@ export const defineFieldModelsFromReference =
         return acc.set(current, new Record(shape.toObject()));
       }, new Map);
   };
-
-
-export const hydrate = () => {
-  return new Map({
-    reference: new Map(),
-    collection: new Map()
-  });
-};
 
 
 // Methods.
@@ -314,10 +310,22 @@ export const addField =
     );
   };
 
+/**
+ * removeField()
+ *
+ * @param state {Object}
+ * @param formId {String}
+ * @param fieldId {String}
+ */
+export const removeField =
+  (state, formId, fieldId) => {
+    return state.deleteIn(['collection', formId, 'fields', fieldId]);
+  };
+
 // TODO: update as it don't follow the model.
 // You can update without restriction, that is not expected.
 // This method is actually in use, and so still exported to not
-// break every things. But should not be public at the end.
+// break everything. But should not be public at the end.
 export const mergeIn =
   (state, path, value) => {
     const ensureImmutable = fromJS(value);
@@ -332,8 +340,6 @@ export const removeIn =
 // Reducer.
 // ----------------------------------
 export default function form(state = initialState, action = {}) {
-  if (action.ready === false) return state;
-
   switch (action.type) {
   case SET_REFERENCE:
     return setReference(state, action.msg);
@@ -345,6 +351,8 @@ export default function form(state = initialState, action = {}) {
     return remove(state, action.msg);
   case ADD_FIELD:
     return addField(state, action.msg.id, action.msg.value);
+  case REMOVE_FIELD:
+    return removeField(state, action.msg.formId, action.msg.fieldId);
   case MERGE_IN:
     const {type, ready, result, msg: {path, value}} = action;
     const obj = {

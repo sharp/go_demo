@@ -9,12 +9,15 @@ import form, {
   ADD,
   REMOVE,
   ADD_FIELD,
+  REMOVE_FIELD,
   MERGE_IN,
   REMOVE_IN,
   actionSetReference,
   actionSetCollection,
   actionAdd,
   actionRemove,
+  actionAddField,
+  actionRemoveField,
   actionMergeIn,
   actionRemoveIn,
   setReference,
@@ -22,6 +25,7 @@ import form, {
   add,
   remove,
   addField,
+  removeField,
   mergeIn,
   removeIn,
   extractShapeFromReference,
@@ -513,6 +517,13 @@ describe('Form', () => {
         });
       });
     });
+    describe('removeField', () => {
+      it('should work', () => {
+        const state = state_helper;
+        const nextState = removeField(state, '_1', '_1_1');
+        expect(nextState.getIn(['collection', '_1', 'fields']).size).toBe(1);
+      });
+    });
     describe('mergeIn', () => {
       it('should work', () => {
         const state = fromJS({
@@ -830,6 +841,18 @@ describe('Form', () => {
         }
       };
       expect(nextState.toJS()).toEqual(expected);
+    });
+    it(`should handles ${REMOVE_FIELD}`, () => {
+      const state = state_helper;
+      const action = {
+        type: REMOVE_FIELD,
+        msg: {
+          formId: '_1',
+          fieldId: '_1_1'
+        }
+      };
+      const nextState = form(state, action);
+      expect(nextState.getIn(['collection', '_1', 'fields']).size).toBe(1);
     });
     it(`should handles ${MERGE_IN}`, () => {
       const state = fromJS({
