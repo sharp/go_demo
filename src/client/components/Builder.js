@@ -1,11 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import uuid from 'node-uuid';
-import {Map, List} from 'immutable';
+import {Map, List, Record} from 'immutable';
 import {
   actionMergeIn as mergeInForm,
-  actionRemoveIn as removeInForm
+  actionRemoveIn as removeInForm,
+  actionAddField as addFieldInForm
 } from '../../shared/reducers/form';
 import View from './helpers/View';
 import Panel from './helpers/Panel';
@@ -25,7 +25,8 @@ const mapDispatchToProps =
   dispatch => ({
     actions: bindActionCreators({
       mergeInForm,
-      removeInForm
+      removeInForm,
+      addFieldInForm
     }, dispatch)
   });
 
@@ -47,20 +48,14 @@ const onBlur = (path, actions, name) => event => {
 class Builder extends Component {
   static propTypes = {
     builder: PropTypes.shape({
-      form: PropTypes.instanceOf(Map).isRequired
+      form: PropTypes.instanceOf(Record).isRequired
     }).isRequired,
     params: PropTypes.object
   };
 
   addFieldToForm(field) {
     const {builder, params: {id}} = this.props;
-    const __uuid = uuid.v4();
-    return builder.actions.mergeInForm(
-      [id, 'fields', __uuid],
-      field
-        .set('formId', id)
-        .set('id', __uuid)
-    );
+    return builder.actions.addFieldInForm(id, field);
   }
 
   render() {
@@ -79,12 +74,12 @@ class Builder extends Component {
               type="text"
               value={form.getIn(['collection', id, 'name'])}
               onBlur={onBlur([id], actions, 'name')}
-              />
+            />
             <Input
               type="text"
               value={form.getIn(['collection', id, 'description'])}
               onBlur={onBlur([id], actions, 'description')}
-              />
+            />
           </div>
           {/* TODO: fix this... */}
           <div style={{margin: '.2rem 0 .4rem'}}>
@@ -92,19 +87,21 @@ class Builder extends Component {
               type="field"
               entries={form.getIn(['collection', id, 'fields'], new List()).toList()}
               options={{actions: actions}}
-              />
+            />
           </div>
           <Thread
             type="button"
-            entries={form.get('reference').toList()}
+            entries={form.getIn(['reference', 'models', 'fields'], new Map()).toList()}
             options={{
               onClick: entry => this.addFieldToForm(entry)
-            }}/>
+            }}
+          />
         </Panel>
         <Panel type="half-second">
           <Iframe
             builder={builder}
-            entry={builder.form.getIn(['collection', id], new Map())}/>
+            entry={builder.form.getIn(['collection', id], new Map())}
+          />
         </Panel>
       </View>
     );

@@ -1,11 +1,12 @@
 import React, {Component, PropTypes} from 'react';
-import {List} from 'immutable';
+import {Map, List} from 'immutable';
 import css from 'react-css-modules';
 import styles from '../../styles/thread.css';
 import Card from './Card';
 import Feed from './Feed';
 import Button from './Button';
 import Field from './Field';
+import randomString from '../../../shared/utils/randomString';
 
 export class Thread extends Component {
   static propTypes = {
@@ -19,7 +20,7 @@ export class Thread extends Component {
       <div styleName="container">
         {entries.map(entry => {
           const clean = {
-            key: entry.get('id'),
+            key: (Map.isMap(entry) && entry.get('id')) || randomString(),
             entry,
             options
           };

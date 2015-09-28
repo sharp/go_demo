@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 import css from 'react-css-modules';
-import {Map} from 'immutable';
 import Icon from './Icon';
 import styles from '../../styles/button.css';
 
@@ -12,7 +11,9 @@ export const Inner = ({entry}) => {
         <Icon type={entry.get('type')} size="32" />
       </div>
       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-        <div style={{fontSize: '1.4rem', padding: '0 0rem', lineHeight: '2.8rem'}}>{entry.get('name')}</div>
+        <div style={{fontSize: '1.4rem', padding: '0 0rem', lineHeight: '2.8rem'}}>
+          {entry.get('name')}
+        </div>
       </div>
     </div>
   );
@@ -25,7 +26,7 @@ export const Selector = ({entry, action, children}) =>
 
 export class Button extends Component {
   static propTypes = {
-    entry: PropTypes.instanceOf(Map).isRequired,
+    entry: PropTypes.func.isRequired,
     options: PropTypes.shape({
       onClick: PropTypes.function
     })
@@ -33,12 +34,13 @@ export class Button extends Component {
 
   render() {
     const {entry, options: {onClick}} = this.props;
+    const e = new entry();
     return (
       <div styleName="container">
         <div styleName="base">
-          <Selector entry={entry} action={onClick}>
+          <Selector entry={e} action={onClick}>
             <div styleName="supporting">
-              <Inner entry={entry}/>
+              <Inner entry={e}/>
             </div>
           </Selector>
         </div>

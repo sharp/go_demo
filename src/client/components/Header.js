@@ -2,16 +2,15 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {Map} from 'immutable';
+import {Record} from 'immutable';
 import css from 'react-css-modules';
-import uuid from 'node-uuid';
 import {
-  MERGE_IN,
   actionAdd as addForm
 } from '../../shared/reducers/form';
 import {update} from '../actions';
 import Icon from './helpers/Icon';
 import styles from '../styles/header.css';
+import randomString from '../../shared/utils/randomString';
 
 // Select state to use.
 const mapStateToProps =
@@ -39,7 +38,7 @@ const mergeProps =
 class Header extends Component {
   static propTypes = {
     builder: PropTypes.shape({
-      form: PropTypes.instanceOf(Map).isRequired,
+      form: PropTypes.instanceOf(Record).isRequired,
       actions: PropTypes.object.isRequired
     }).isRequired,
     location: PropTypes.object,
@@ -48,7 +47,7 @@ class Header extends Component {
   };
 
   addFormToCollection() {
-    const id = uuid.v4();
+    const id = randomString();
     this.props.builder.actions.addForm({
       id,
       name: 'Enter your title...',
@@ -59,12 +58,13 @@ class Header extends Component {
 
   updateForm() {
     const {builder: {form, actions}, params: {id}} = this.props;
-    return actions.update({
-      type: MERGE_IN,
-      msg: {
-        path: [id],
-        value: form.getIn(['collection', id])
-      }
+    const currentForm = form.getIn(['collection', id]).toObject();
+
+    // TODO: use a dedicated action for update form, specially because
+    // send -> true added like this is not acceptable.
+    return actions.addForm({
+      ...currentForm,
+      send: true
     });
   }
 

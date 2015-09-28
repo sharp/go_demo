@@ -1,12 +1,12 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
-import {Map} from 'immutable';
+import {Record} from 'immutable';
 import css from 'react-css-modules';
 import styles from '../../styles/card.css';
 
 export class Card extends Component {
   static propTypes = {
-    entry: PropTypes.instanceOf(Map).isRequired,
+    entry: PropTypes.instanceOf(Record).isRequired,
     options: PropTypes.shape({
       link: PropTypes.shape({
         baseUrl: PropTypes.string

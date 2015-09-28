@@ -43,12 +43,14 @@ class Home extends Component {
           <Thread
             type="card"
             entries={form.get('collection').toList()}
-            options={{link: {baseUrl: 'form'}}}/>
+            options={{link: {baseUrl: 'form'}}}
+          />
         </Panel>
         <Panel type="three_one-second">
           <Thread
             type="feed"
-            entries={feed.get('list').sortBy(n => n.get('created_at')).reverse()}/>
+            entries={feed.get('list').sortBy(n => n.get('created_at')).reverse()}
+          />
         </Panel>
       </View>
     );
