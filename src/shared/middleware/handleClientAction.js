@@ -45,7 +45,7 @@ const handleClientAction = store => next => action => {
 
   switch (action.type) {
   case 'form/ADD':
-    const base = createAction(action, <asyncHand></asyncHand>ler);
+    const base = createAction(action, asyncHandler);
     const delegate =
       base(
         `${apiEndpoint}/forms`,
