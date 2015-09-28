@@ -228,8 +228,14 @@ export const setCollection =
             }));
           });
       });
-
-      return acc.set(initial.get('id'), initial);
+      return acc.set(initial.get('id'), new FormEntry({
+        id: initial.get('id'),
+        name: initial.get('name'),
+        description: initial.get('description'),
+        created_at: initial.get('created_at'),
+        fields: initial.get('fields'),
+        result: initial.get('result')
+      }));
     }, new Map);
 
     return state.set('collection', result);
@@ -250,9 +256,33 @@ export const setCollection =
  */
 export const add =
   (state, value) => {
-    const result = ensure(value);
+    const initial = fromJS(value);
+
+    // Ensure that fields match related models.
+    const final = initial.withMutations(container => {
+      const fields = container.getIn(['fields'], new Map());
+
+      return fields
+        .keySeq()
+        .forEach(fieldId => {
+          const currentField        = container.getIn(['fields', fieldId]);
+          const currentFieldContent = container.getIn(['fields', fieldId, 'content']);
+          const currentType         = container.getIn(['fields', fieldId, 'content', 'type']);
+
+          const Model = state.getIn(['reference', 'models', 'fields', currentType]);
+
+          container.setIn(['fields', fieldId], new FieldEntry({
+            id: fieldId,
+            formId: container.get('id'),
+            created_at: currentField.get('created_at') || Date.now(),
+            content: new Model(currentFieldContent)
+          }));
+        });
+    });
+
+
     return state.update('collection', new Map(),
-      current => current.set(result.get('id'), new FormEntry(result))
+      current => current.set(final.get('id'), new FormEntry(final))
     );
   };
 
@@ -299,12 +329,12 @@ export const addField =
           ? ensureImmutable.get('id')
           : randomString();
 
-        const Model = state.getIn(['reference', 'models', 'fields', ensureImmutable.get('type')]);
+        const Model = state.getIn(['reference', 'models', 'fields', ensureImmutable.getIn(['content', 'type']) || ensureImmutable.get('type')]);
 
         return current.set(fieldId, new FieldEntry({
           id: fieldId,
           formId,
-          content: new Model(ensureImmutable.toObject())
+          content: new Model(ensureImmutable.get('content') && ensureImmutable.get('content').toObject())
         }));
       }
     );

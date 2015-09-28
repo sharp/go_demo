@@ -1,19 +1,20 @@
 import React, {Component, PropTypes} from 'react';
-import {Map} from 'immutable';
+import {Record} from 'immutable';
 import css from 'react-css-modules';
 import styles from '../../styles/field.css';
 import Icon from './Icon';
 import Input from '../helpers/Input';
 
-const onBlur = (path, actions, name) => event => {
-  const {mergeInForm} = actions;
+const onBlur = (actions, entry, name) => event => {
+  const {addFieldInForm} = actions;
   const value = event.target.value;
-  return mergeInForm(path, new Map({[name]: value}));
+  const result = entry.setIn(['content', name], value);
+  return addFieldInForm(entry.get('formId'), result);
 };
 
 const generateInputs =
-  (actions, path, entry) => {
-    return Object.keys(entry.toObject()).map(current => {
+  (actions, formId, entry) => {
+    return Object.keys(entry.get('content').toObject()).map(current => {
       switch (current) {
       case 'question':
       case 'description':
@@ -22,8 +23,8 @@ const generateInputs =
           <Input
             key={entry.get('id') + current}
             type="text"
-            value={entry.get(current)}
-            onBlur={onBlur(path, actions, current)}/>
+            value={entry.getIn(['content', current])}
+            onBlur={onBlur(actions, entry, current)}/>
         );
       // TODO: handle w/ check box
       case 'required':
@@ -36,7 +37,7 @@ const generateInputs =
 
 export class Field extends Component {
   static propTypes = {
-    entry: PropTypes.instanceOf(Map).isRequired,
+    entry: PropTypes.instanceOf(Record).isRequired,
     options: PropTypes.shape({
       actions: PropTypes.object
     })
@@ -44,7 +45,7 @@ export class Field extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.state = {open: false};
+    this.state = {open: true};
   }
 
   toggle() {
@@ -54,10 +55,8 @@ export class Field extends Component {
   render() {
     const {open} = this.state;
     const {entry, options: {actions}} = this.props;
-
     const formId = entry.get('formId');
     const fieldId = entry.get('id');
-    const path = [formId, 'fields', fieldId];
 
     return (
       <div styleName="container">
@@ -69,11 +68,11 @@ export class Field extends Component {
             {/* Details */}
             <div styleName="header-container">
               <div styleName="header-content">
-                <Icon type={entry.get('type')} size="20" />
+                <Icon type={entry.getIn(['content', 'type'])} size="20" />
                 {(open)
                   ? null
                   : <div styleName="header-title">
-                      {entry.get('question')}
+                      {entry.getIn(['content', 'question'])}
                     </div>
                 }
               </div>
@@ -97,7 +96,7 @@ export class Field extends Component {
           {/* Inputs */}
           {(open)
             ? <div styleName="inputs-container">
-                {generateInputs(actions, path, entry)}
+                {generateInputs(actions, formId, entry)}
               </div>
             : null
           }

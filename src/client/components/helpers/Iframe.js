@@ -1,15 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import css from 'react-css-modules';
-import {Map} from 'immutable';
+import {Record} from 'immutable';
 import styles from '../../styles/iframe.css';
 import NoPreview from '../helpers/NoPreview';
 
 export class Iframe extends Component {
   static propTypes = {
     builder: PropTypes.shape({
-      form: PropTypes.instanceOf(Map).isRequired
+      form: PropTypes.instanceOf(Record).isRequired
     }).isRequired,
-    entry: PropTypes.instanceOf(Map)
+    entry: PropTypes.any
   };
   render() {
     const {builder, entry} = this.props;
