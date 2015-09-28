@@ -45,14 +45,14 @@ const handleClientAction = store => next => action => {
 
   switch (action.type) {
   case 'form/ADD':
-    const base = createAction(action.type, asyncHandler);
+    const base = createAction(action, <asyncHand></asyncHand>ler);
     const delegate =
       base(
         `${apiEndpoint}/forms`,
         {
           method: 'POST',
           headers: {'X-API-TOKEN': TYPEFORM_API_KEY},
-          body: JSON.stringify(extractFrom(action.payload))
+          body: JSON.stringify(extractFrom(action.msg))
         }
       );
     return next(delegate);

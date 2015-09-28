@@ -1,18 +1,23 @@
 const identity = a => a;
 
-const createAction = (type, creator) => {
+const createAction = (action, creator) => {
   const finalCreator =
     typeof creator === 'function'
       ? creator
       : identity;
 
   return (...args) => {
-    const action = {
-      type,
-      payload: finalCreator(...args)
+    const {client, msg, ...other} = action;
+
+    const newAction = {
+      ...other,
+      msg: {
+        ...msg,
+        result: finalCreator(...args)
+      }
     };
 
-    return action;
+    return newAction;
   };
 };
 
