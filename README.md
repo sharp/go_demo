@@ -25,3 +25,7 @@ Since, and from a while, I like to play with Redux and immutable data (mainly us
 I’ll be brief by saying that I learned a lot, and had fun. But I’m sorry, I’ll not be able to work more on it for the moment. I have to move this week to Barcelona, and as a French citizens of Prague (Czech Republic), it’s not that easy to organise, at least it need some time. Then, I’ll go ahead and go deeper with [Relay](https://facebook.github.io/relay/)/[GraphQL](https://facebook.github.io/graphql/), Virtual DOM, and acquire a better understanding [ReactiveX](http://reactivex.io/) of [Elm](http://elm-lang.org/) & [ClojureScript](https://github.com/clojure/clojurescript) concepts. I’ll also PR some open sources projects until I’ll have a new regular job.
 
 Maybe, I’ll work later on this application, at least reach a more stable version and why not include some fancy stuffs. But if you’re interest about that you found here, feel free to open an issue to discuss with me, I’ll help and provide feedback as I can.
+
+![](http://i.imgur.com/BLLtNsx.png?1)
+
+[(full resolution)](http://i.imgur.com/BLLtNsx.png)
